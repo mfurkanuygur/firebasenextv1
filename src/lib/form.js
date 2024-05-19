@@ -8,10 +8,9 @@ const auth = getAuth()
 export const addNewUser = async (formData) => {
     const { userName, userSurname } = Object.fromEntries(formData)
     try {
-        const docRef = await addDoc(collection(DB, "users"), {
+        const docRef = await addDoc(collection(maindatabase, "tests"), {
             first: userName,
             last: userSurname,
-            born: 1815
         });
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
