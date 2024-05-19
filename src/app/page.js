@@ -4,7 +4,7 @@ import { addNewUser, createUser, handleSignout, signUser } from "@/lib/form";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 
 export default async function Home() {
-  const tests = await getDocs(collection(maindatabase, "tests"));
+  const tests = await getDocs(collection(maindatabase, "tests"), { store: "no-cache" });
 
   return (
     <main>
@@ -21,9 +21,9 @@ export default async function Home() {
           ))
         }
       </div>
-      <hr/>
+      <hr />
 
-     <div className="flex flex-col justify-center text-center py-6 bg-red-400">
+      <div className="flex flex-col justify-center text-center py-6 bg-red-400">
         <h1>yeni kullanıcı</h1>
         <form className="flex flex-col bg-slate-600 w-full" action={createUser}>
           <input type="text" placeholder="name gir" name="name" />
@@ -31,11 +31,11 @@ export default async function Home() {
           <input type="text" placeholder="password gir" name="password" />
           <button className="w-min">ekle</button>
         </form>
-  
-     </div>
+
+      </div>
       <form action={handleSignout} className="my-6 py-4"><button className="bg-yellow-400" >çıkış yap</button></form>
 
-        <hr/>
+      <hr />
       <div className="flex flex-col justify-center text-center py-6 bg-red-400">
         <h1>varolan kullanıcı</h1>
         <form className="flex flex-col bg-slate-600 w-2/3" action={signUser}>
