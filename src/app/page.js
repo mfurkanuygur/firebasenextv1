@@ -4,7 +4,7 @@ import { addNewUser, createUser, handleSignout, signUser } from "@/lib/form";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 
 export default async function Home() {
-  const users = await getDocs(collection(maindatabase, "users"));
+  const tests = await getDocs(collection(maindatabase, "tests"));
 
   return (
     <main>
@@ -16,7 +16,7 @@ export default async function Home() {
       </form>
       <div className="bg-orange-400">
         {
-          users.docs.map((doc) => (
+          tests.docs.map((doc) => (
             <div key={doc.id}> {doc.data().first} {doc.data().last} {doc.data().born}</div>
           ))
         }
