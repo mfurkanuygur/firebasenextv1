@@ -17,7 +17,7 @@ export default async function Home() {
       <div className="bg-orange-400">
         {
           tests.docs.map((doc) => (
-            <div key={doc.id}> {doc.data().first} {doc.data().last} {doc.data().born}</div>
+            <div key={doc.id}> {doc.data().first} {doc.data().last}</div>
           ))
         }
       </div>
