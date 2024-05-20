@@ -3,9 +3,10 @@ import { maindatabase } from "@/firebase.config";
 import { addNewUser, createUser, handleSignout, signUser } from "@/lib/form";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 
-export default async function Home() {
-  const tests = await getDocs(collection(maindatabase, "tests"), { store: "no-cache" });
 
+
+export default async function Home() {
+  const tests = await getDocs(collection(maindatabase, "tests"), { store: "no-store" });
   return (
     <main>
       <h1>veri ekleme</h1>
