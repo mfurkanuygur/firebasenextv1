@@ -20,7 +20,7 @@ const MobileNavbar = ({ loginState, handleLogout }) => {
             <div className=" text-center w-full pt-2 ">
                 <Link className="text-xl  font-semibold" href={"/"}> nextStore</Link>
             </div>
-            <div className="flex items-center justify-center px-2">
+            <div className="flex items-center justify-between px-2">
                 <form onSubmit={(e) => handleSearch(e)} className="flex gap-2 items-center border rounded-md  mt-1">
                     <MdSearch className="text-2xl ml-2" />
                     <input className="w-auto p-1 rounded-md transition text-sm font-light outline-none text-gray-500 focus:text-black" type="search" placeholder="Search something!!" />
