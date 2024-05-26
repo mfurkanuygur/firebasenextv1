@@ -6,9 +6,22 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 
 
 export default async function Home() {
-  const tests = await getDocs(collection(maindatabase, "tests"), { store: "no-store" });
+  const products = await getDocs(collection(maindatabase, "products"));
+  products.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.data().title);
+  });
   return (
-    <main>
+    <main className="h-screen flex flex-col justify-center items-center bg-slate-200">
+      {
+        // products.docs.map((doc) => (
+        //   <div key={doc.id}> {doc.data().first} {doc.data().last}</div>
+        // ))
+        products.docs.map((doc) => (
+          // doc.data() is never undefined for query doc snapshots
+          <div key={doc.id}> {doc.data().title}</div>
+        ))
+      }
       {/* <h1>veri ekleme</h1>
       <form className="flex flex-col bg-slate-600 w-2/3" action={addNewUser}>
         <input type="text" placeholder="isim gir" name="userName" />
@@ -16,28 +29,15 @@ export default async function Home() {
         <button className="w-min">ekle</button>
       </form>
       <div className="bg-orange-400">
-        {
-          tests.docs.map((doc) => (
-            <div key={doc.id}> {doc.data().first} {doc.data().last}</div>
-          ))
-        }
+        
       </div>
       <hr />
 
-      <div className="flex flex-col justify-center text-center py-6 bg-red-400">
-        <h1>yeni kullanıcı</h1>
-        <form className="flex flex-col bg-slate-600 w-full" action={createUser}>
-          <input type="text" placeholder="name gir" name="name" />
-          <input type="text" placeholder="email gir" name="email" />
-          <input type="text" placeholder="password gir" name="password" />
-          <button className="w-min">ekle</button>
-        </form>
-
-      </div>
+     
       <form action={handleSignout} className="my-6 py-4"><button className="bg-yellow-400" >çıkış yap</button></form>
 
       <hr /> */}
-      
+
     </main>
   );
 }
