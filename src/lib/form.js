@@ -3,8 +3,11 @@ import { collection, addDoc, updateDoc, arrayUnion, doc, setDoc } from "firebase
 import { maindatabase } from "@/firebase.config";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { cookies } from "next/headers";
-
+import { redirect } from "next/navigation";
+import { NextResponse } from "next/server"
+import { sessionState } from "@/store/store";
 const auth = getAuth()
+
 export const addNewUser = async (formData) => {
     const { userName, userSurname } = Object.fromEntries(formData)
     try {
@@ -21,12 +24,13 @@ export const createUser = async (formData) => {
     const { name, email, password } = Object.fromEntries(formData)
     console.log(name, email, password)
     try {
+
         await createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 const USERTOKEN = user.uid
                 console.log("kullanıcı uid", user.uid)
-                setDoc(doc(maindatabase, "users",USERTOKEN), {
+                setDoc(doc(maindatabase, "users", USERTOKEN), {
                     uid: USERTOKEN,
                     email: email,
                     username: name,
@@ -43,10 +47,16 @@ export const createUser = async (formData) => {
     } catch (error) {
         console.log(error)
     }
+    if (auth?.currentUser?.uid) {
+        console.log("Başarıyla kayıt oldun. Anasayfaya gideceksin")
+        redirect("/")
+    }
+
 }
 
 export const signUser = async (formData) => {
     const { email, password } = Object.fromEntries(formData)
+
     try {
         await signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -62,8 +72,17 @@ export const signUser = async (formData) => {
                     path: '/',
                 })
             })
+
     } catch (error) {
         console.log(error)
+    }
+    if (auth?.currentUser?.uid) {
+        console.log("Kayıtlı kullanıcı hosgeldin")
+        redirect("/")
+
+    }
+    else{
+        console.log("Kayıtlı kullanıcı olmadığın için giriş yapamıyorsun. Önce kayıt ol")
     }
 }
 
