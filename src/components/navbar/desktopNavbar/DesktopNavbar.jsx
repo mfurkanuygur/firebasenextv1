@@ -14,7 +14,7 @@ const DesktopNavbar = () => {
   const loginState = useLoginState((state) => state.loginState)
   const updateLoginState = useLoginState((state) => state.updateLoginState)
   return (
-    <div className="hidden md:flex justify-between items-center capitalize font-bold">
+    <div className="hidden md:flex justify-between items-center capitalize font-bold w-full">
       <Link className="text-xl md:text-2xl font-semibold " href={"/"}>NextStore</Link>
       {navLinks.map(link => (
         <Link key={link.id} href={link.url} className="hidden md:block font-light text-sm transition-all hover:text-primary-red ">{link.name}</Link>

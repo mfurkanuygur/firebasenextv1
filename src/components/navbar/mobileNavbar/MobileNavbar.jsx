@@ -23,7 +23,7 @@ const MobileNavbar = ({ loginState, handleLogout }) => {
             <div className="flex items-center justify-between px-2">
                 <form onSubmit={(e) => handleSearch(e)} className="flex gap-2 items-center border rounded-md  mt-1">
                     <MdSearch className="text-2xl ml-2" />
-                    <input className="w-auto p-1 rounded-md transition text-sm font-light outline-none text-gray-500 focus:text-black" type="search" placeholder="Search something!!" />
+                    <input className="w-auto p-1 rounded-md transition-all text-sm font-light outline-none text-gray-500 focus:text-black" type="search" placeholder="Search something!!" />
                 </form>
                 <button onClick={() => { setUserMenuState(!userMenuState) }} className="flex flex-col justify-center items-center px-2">
                     <MdPerson className="text-xl transition-all hover:text-primary-red" />
@@ -31,7 +31,7 @@ const MobileNavbar = ({ loginState, handleLogout }) => {
                     {
                         userMenuState && (
                             loginState && (
-                                <div className="absolute z-30  flex flex-col w-full mx-auto  gap-2  py-3  top-20 left-0 bg-gray-300 rounded-s-md">
+                                <div className="absolute z-30 flex flex-col w-full mx-auto  gap-2  py-3  top-20 left-0 bg-gray-300 rounded-s-md">
                                     <div className="flex gap-2 justify-center items-center" onClick={() => { handleLogout() }}>
                                         <MdOutlineLogout className="text-xl transition-all hover:text-primary-red" />
                                         <p className="text-xs">Exit account</p>
@@ -39,7 +39,7 @@ const MobileNavbar = ({ loginState, handleLogout }) => {
                                 </div>
                             )
                             || (
-                                <div className="absolute z-30  flex  justify-around  w-full py-3  top-20 left-0 bg-gray-300 rounded-s-md">
+                                <div className="absolute z-30  flex  justify-around  w-full py-3  top-20 left-0 bg-gray-300 rounded-b-md">
                                     <Link href={"/login"} className="flex  justify-center items-center gap-2 w-auto ">
                                         <FiUser className="text-xl" />
                                         <p className="text-xs font-medium">Login</p>
