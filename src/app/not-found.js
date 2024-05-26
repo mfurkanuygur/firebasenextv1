@@ -1,5 +1,6 @@
 import Image from "next/image"
-import notFoundGif from "../../public/notFound.gif"
+import notFoundGif from "../../public/notfound.gif"
+
 const notFound = () => {
     return (
         <div className="h-screen flex flex-col justify-center items-center gap-4">
