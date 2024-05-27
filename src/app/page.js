@@ -3,14 +3,18 @@ import { maindatabase } from "@/firebase.config";
 import { addNewUser, createUser, handleSignout, signUser } from "@/lib/form";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 
-
+async function getProducts() {
+  const products = await getDocs(collection(maindatabase, "products"));
+  return products
+}
 
 export default async function Home() {
-  const products = await getDocs(collection(maindatabase, "products"));
-  products.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.data().title);
-  });
+  const products = await getProducts()
+  // const products = await getDocs(collection(maindatabase, "products"));
+  // products.forEach((doc) => {
+  //   // doc.data() is never undefined for query doc snapshots
+  //   console.log(doc.data().title);
+  // });
   return (
     <main className="h-screen flex flex-col justify-center items-center bg-slate-200">
       {
