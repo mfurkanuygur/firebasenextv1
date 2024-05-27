@@ -4,7 +4,7 @@ import { addNewUser, createUser, handleSignout, signUser } from "@/lib/form";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 
 async function getProducts() {
-  const products = await getDocs(collection(maindatabase, "products"));
+  const products = await getDocs(collection(maindatabase, "products"), { next: { revalidate: 10 } });
   return products
 }
 
