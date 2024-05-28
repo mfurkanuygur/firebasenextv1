@@ -31,7 +31,7 @@ const MobileNavbar = ({ loginState, handleLogout }) => {
                     {
                         userMenuState && (
                             loginState && (
-                                <div className="absolute z-30 flex flex-col w-full mx-auto  gap-2  py-3  top-20 left-0 bg-gray-300 rounded-s-md">
+                                <div className="absolute z-30 flex flex-col w-full mx-auto  gap-2  py-3  top-20 left-0 bg-white rounded-b-3xl">
                                     <div className="flex gap-2 justify-center items-center" onClick={() => { handleLogout() }}>
                                         <MdOutlineLogout className="text-xl transition-all hover:text-primary-red" />
                                         <p className="text-xs">Exit account</p>
@@ -39,7 +39,7 @@ const MobileNavbar = ({ loginState, handleLogout }) => {
                                 </div>
                             )
                             || (
-                                <div className="absolute z-30  flex  justify-around  w-full py-3  top-20 left-0 bg-gray-300 rounded-b-md">
+                                <div className="absolute z-30  flex  justify-around  w-full py-3  top-20 left-0 bg-white rounded-b-3xl">
                                     <Link href={"/login"} className="flex  justify-center items-center gap-2 w-auto ">
                                         <FiUser className="text-xl" />
                                         <p className="text-xs font-medium">Login</p>
@@ -51,11 +51,8 @@ const MobileNavbar = ({ loginState, handleLogout }) => {
                                 </div>
                             )
                         )
-
-
                     }
                 </button>
-
             </div >
             <div className="flex fixed bottom-0 left-0 z-50 w-full overflow-hidden gap-8 py-2 px-2 border-t-2 justify-between items-center capitalize bg-white  ">
                 <Link
