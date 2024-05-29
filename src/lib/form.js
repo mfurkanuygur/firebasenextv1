@@ -33,7 +33,7 @@ export const createUser = async (formData) => {
                     uid: USERTOKEN,
                     email: email,
                     username: name,
-                    cart: [],// Boş bir sepet
+                    basket: [],// Boş bir sepet
                     favs: []// Boş bir fav
                 });
                 cookies().set('userToken', USERTOKEN, {
