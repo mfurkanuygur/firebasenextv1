@@ -31,7 +31,8 @@ const Navbar = () => {
         updateLoginState(false);
     };
     return (
-        <header className="container mx-auto h-auto  bg-white text-main-color pb-2 md:pb-0 block top-0 left-0" >
+        // fixed z-50
+        <header className=" container mx-auto h-auto  bg-white text-main-color pb-2 md:pb-0 block top-0 left-0" >
             <DesktopNavbar />
 
             {menuState && (

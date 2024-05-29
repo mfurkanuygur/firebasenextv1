@@ -1,11 +1,10 @@
 "use server"
-import { collection, addDoc, updateDoc, arrayUnion, doc, setDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, arrayUnion, doc, setDoc, getDoc } from "firebase/firestore";
 import { maindatabase } from "@/firebase.config";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { NextResponse } from "next/server"
-import { sessionState } from "@/store/store";
+
 const auth = getAuth()
 
 export const addNewUser = async (formData) => {
@@ -34,7 +33,8 @@ export const createUser = async (formData) => {
                     uid: USERTOKEN,
                     email: email,
                     username: name,
-                    cart: [] // Boş bir sepet
+                    cart: [],// Boş bir sepet
+                    favs: []// Boş bir fav
                 });
                 cookies().set('userToken', USERTOKEN, {
                     httpOnly: false,
@@ -81,7 +81,7 @@ export const signUser = async (formData) => {
         redirect("/")
 
     }
-    else{
+    else {
         console.log("Kayıtlı kullanıcı olmadığın için giriş yapamıyorsun. Önce kayıt ol")
     }
 }

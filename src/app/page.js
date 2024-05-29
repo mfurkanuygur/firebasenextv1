@@ -17,8 +17,8 @@ export default async function Home() {
   //   console.log(doc.data().title);
   // });
   return (
-    <main className="min-h-screen flex flex-col justify-center items-center bg-slate-200">
-      <section className="grid grid-cols-2">
+    <main className="min-h-screen flex flex-col  justify-center items-center bg-slate-200">
+      <section className=" grid gap-3 grid-cols-2 md:grid-cols-3 md:px-6 lg:grid-cols-5 p-3 lg:px-12">
         {
           // products.docs.map((doc) => (
           //   <div key={doc.id}> {doc.data().first} {doc.data().last}</div>
